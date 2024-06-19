@@ -1,24 +1,31 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import TaskCreator from './components/TaskCreator';
-import { jsx } from 'react/jsx-runtime';
+import { TaskTable } from './components/TaskTable';
 
 function App() {
 
   const [tasksItems, setTaskItems] = useState([])
+  const [showCompletedSection, setShowCompletedSection] = useState(false)
 
-  function createNewTask (taskName) {
-    if(!tasksItems.find(task => task.name === taskName)){
-      setTaskItems([...tasksItems, {name: taskName, done: false}])
+  function createNewTask(taskName) {
+    if (!tasksItems.find(task => task.name === taskName)) {
+      setTaskItems([...tasksItems, { name: taskName, done: false }])
     }
-    
+
   }
 
-  useEffect(()=>{
+  const toggleTask = task => {
+    setTaskItems(
+      tasksItems.map(t => (t.name == task.name) ? { ...t, done: !t.done } : t)
+    )
+  }
+
+  useEffect(() => {
     let data = localStorage.getItem('task');
-    if(data){
+    if (data) {
       setTaskItems(JSON.parse(data))
-    }  
+    }
   }, [])
 
   useEffect(() => {
@@ -28,22 +35,19 @@ function App() {
   return (
     <div className="App">
 
-      <TaskCreator createNewTask={createNewTask}/>
+      <TaskCreator createNewTask={createNewTask} />
 
-      <table>
-        <thead>
-          <tr>
-            <th>Tasks</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            tasksItems.map( task => <tr key={task.name}><td>{task.name}</td></tr>)
-          }
-        </tbody>
-      </table>
+      <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
 
+      <div>
+        <input type='checkbox' onChange={e => setShowCompletedSection(!showCompletedSection)} /> <label>Show Task Done</label>
+      </div>
 
+      {
+        showCompletedSection && (
+          <TaskTable tasks={tasksItems} toggleTask={toggleTask} showCompleted={showCompletedSection} />
+        )
+      }
 
     </div>
   );
