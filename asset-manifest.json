@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/https//Krysthecoder.github.io/ToDoApp/static/css/main.f51cd021.css",
-    "main.js": "/https//Krysthecoder.github.io/ToDoApp/static/js/main.f1fdc619.js",
-    "index.html": "/https//Krysthecoder.github.io/ToDoApp/index.html",
-    "main.f51cd021.css.map": "/https//Krysthecoder.github.io/ToDoApp/static/css/main.f51cd021.css.map",
-    "main.f1fdc619.js.map": "/https//Krysthecoder.github.io/ToDoApp/static/js/main.f1fdc619.js.map"
+    "main.css": "/ToDoApp/static/css/main.a3d8816d.css",
+    "main.js": "/ToDoApp/static/js/main.f1fdc619.js",
+    "index.html": "/ToDoApp/index.html",
+    "main.a3d8816d.css.map": "/ToDoApp/static/css/main.a3d8816d.css.map",
+    "main.f1fdc619.js.map": "/ToDoApp/static/js/main.f1fdc619.js.map"
   },
   "entrypoints": [
-    "static/css/main.f51cd021.css",
+    "static/css/main.a3d8816d.css",
     "static/js/main.f1fdc619.js"
   ]
 }
